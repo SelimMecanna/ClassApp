@@ -1,0 +1,26 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+.venv/
+env/
+
+# Ignore Git folder
+.git/
+.gitignore
+
+# Ignore IDE-specific files
+*.idea/
+*.vscode/
+
+# Ignore other unnecessary files
+*.log
+*.tmp
+
+# App folders
+/Test_Images/
+
+# App files
+/test_app.py

@@ -50,6 +50,7 @@ def test_predict_invalid_input(image_data):
         assert image_data["error_message"] in response.json()["detail"]
 
 
+# List of invalid input types
 invalid_inputs = [
     {"image": 30, "error_message": "Input should be a valid string"},
     {"image": True, "error_message": "Input should be a valid string"},

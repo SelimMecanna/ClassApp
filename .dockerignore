@@ -20,7 +20,7 @@ env/
 *.tmp
 
 # App folders
-/Test_Images/
+#/Test_Images/
 
 # App files
-/test_app.py
+#/test_app.py

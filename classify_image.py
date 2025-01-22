@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import tensorflow as tf
 from tensorflow.keras.applications import densenet
 from tensorflow.keras.applications.densenet import preprocess_input, decode_predictions
 import numpy as np
 from PIL import Image
+from contextlib import asynccontextmanager
 import base64
 import io
 
@@ -14,18 +14,27 @@ class ImagePayload(BaseModel):
     image: str  # Base64 encoded image data
 
 
-# Initialize the FastAPI app
-app = FastAPI()
-
 # Load the pre-trained DenseNet121 model on startup
 model = None
 
 
-@app.on_event("startup")
-async def load_model():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global model
-    model = densenet.DenseNet121(weights="./densenet121_weights_tf_dim_ordering_tf_kernels.h5")  # Load pre-trained weights
+    # Load the model during startup
+    model = model = densenet.DenseNet121(
+        weights="./densenet121_weights_tf_dim_ordering_tf_kernels.h5")  # Load pre-trained weights
     print("DenseNet121 model loaded!")
+    try:
+        yield
+    finally:
+        # Cleanup
+        model = None
+        print("DenseNet121 model unloaded!")
+
+
+# Initialize the FastAPI app
+app = FastAPI(lifespan=lifespan)
 
 
 # Define the image preprocessing function

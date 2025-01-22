@@ -28,11 +28,11 @@ Here is the command to use it from the container.
 
 Using the provided [data.json](https://github.com/SelimMecanna/ClassApp/blob/main/data.json) file:
 ```sh
-docker exec -it <container_name> curl -X POST -H "Content_Type: application/json" -d @data.json http://localhost/5000/predict
+docker exec -it <container_name> curl -X POST -H "Content-Type: application/json" -d @data.json http://localhost:5000/predict
 ```
 Or provide the data in terminal command:
 ```sh
-docker exec -it <container_name> curl -X POST -H "Content_Type: application/json" -d '{"image": "Base64_image_encoding"} http://localhost/5000/predict
+docker exec -it <container_name> curl -X POST -H "Content-Type: application/json" -d '{"image": "Base64_image_encoding"}' http://localhost:5000/predict
 ```
 I used the following [site](https://base64.guru/converter/encode/image) to convert images to `base64` when providing them to the app.
 

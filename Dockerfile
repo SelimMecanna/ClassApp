@@ -1,4 +1,11 @@
 FROM python:3.11-slim
+
+# Set environment variables to suppress interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install curl using apt-get
+RUN apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Set the working directory in the container
 WORKDIR /app
 

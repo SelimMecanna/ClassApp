@@ -7,15 +7,17 @@ a classification label for that image based on the output of a pre-trained `Dens
 The app works on any OS, and only requires an installation of `Docker`, all other dependencies are managed by
 the build.
 
-Start by cloning this repository with its submodules.
+The docker image can be either pulled from [Dockerhub](https://hub.docker.com/repository/docker/selim20/classapp/general):
+```sh
+docker pull selim20/classapp:latest
+```
+OR built using the files in this repo with the [Dockerfile](https://github.com/SelimMecanna/ClassApp/blob/main/Dockerfile):
 ```sh
 git clone https://github.com/SelimMecanna/ClassApp.git
-```
-Then build the `Docker` image using [Dockerfile](https://github.com/SelimMecanna/ClassApp/blob/main/Dockerfile).
-```sh
 docker build -t classapp:latest .
 ```
-Then run a container based on the image and project it on the proper port (here I use 5000 for both ports).
+
+Now that the image is set up, run a container based on the image and project it on the proper port (here I use 5000 for both ports).
 ```sh
 docker run -p 5000:5000 --name <container_name> classapp:latest
 ```

@@ -22,7 +22,7 @@ model = None
 async def lifespan(app: FastAPI):
     global model
     # Load the model during startup
-    model = model = densenet.DenseNet121(
+    model = densenet.DenseNet121(
         weights="./densenet121_weights_tf_dim_ordering_tf_kernels.h5")  # Load pre-trained weights
     print("DenseNet121 model loaded!")
     try:

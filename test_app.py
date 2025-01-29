@@ -1,7 +1,7 @@
 import base64
 import pytest
 from fastapi.testclient import TestClient
-from classify_image import *  # Replace with your script's name
+from classify_image import *
 
 
 # Helper function to load a sample image and encode it to Base64
